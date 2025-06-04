@@ -125,51 +125,48 @@ const logout = async (req, res) => {
     });
   }
 };
-
 const updateUserAvatar = async (req, res) => {
-  try {
     const avatarLocalPath = req.file?.path;
     if (!avatarLocalPath) {
-      return res.status(400).json({
-        message: "avatar file is missing",
-        error: true,
-        success: false,
-      });
+        return res.status(500).json({
+            message: "avatar file is missing",
+            success: false,
+            error: true,
+        });
     }
     const avatar = await uploadOnCloudinary(avatarLocalPath);
     if (!avatar.url) {
-      return res.status(500).json({
-        message: "error while uploading the avatar",
-        error: true,
-        success: false,
-      });
+        return res.status(500).json({
+            message: "error while uploading on avatar",
+            success: false,
+            error: true,
+        });
     }
-    const currentUser = await User.findById(req.user.id);
-    if (currentUser.avatar) {
-      const currentAvatar = currentUser.avatar;
-      const deleteAvatar = currentAvatar.split("/").pop().split(".")[0];
-      if (deleteAvatar) {
-        console.log("delete image on cloudinary");
-        await deleteOnCloudinary(deleteAvatar);
-      }
-    }
-    const user = await User.findByIdAndUpdate(req.user._id, {
-      avatar: avatar.url,
-    });
+    const currentUser = await User.findById(req.user._id);
+    // console.log(currentUser.avatar);
 
+    if (currentUser.avatar) {
+        const currentAvatar = currentUser.avatar;
+        const deleteAvatar = currentAvatar.split("/").pop().split(".")[0];
+        if (deleteAvatar) {
+            console.log("delete image on cloudinary");
+            await deleteOnCloudinary(deleteAvatar);
+        }
+    }
+    const user = await User.findByIdAndUpdate(req.user._id,
+        {
+            $set: {
+                avatar: avatar.url,
+            },
+        },
+        { new: true}
+    );
     return res.status(200).json({
-      message: "avatar updated successfully",
-      error: false,
-      success: true,
-      data: user,
+        message: "image upload successfully",
+        error: false,
+        success: true,
+        data: user,
     });
-  } catch (error) {
-    return res.status(500).json({
-      message: error.message || error,
-      error: true,
-      success: false,
-    });
-  }
 };
 const updateProfile = async (req, res) => {
   try {

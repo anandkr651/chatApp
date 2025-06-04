@@ -17,7 +17,7 @@ router.route("/login").post(login);
 router.route("/logout").get(logout);
 router
   .route("/updateAvatar")
-  .patch(verifyJWT, upload.single("avatar"), updateUserAvatar);
+  .post(verifyJWT, upload.single("avatar"), updateUserAvatar);
 router.route("/updateProfile").post(verifyJWT, updateProfile);
 router.route("/allUserExceptOnline").get(verifyJWT, allUserExceptOnline);
 router.route("/userDetails").get(verifyJWT, userDetails);

@@ -22,7 +22,7 @@ const SummaryApi = {
   },
   updateAvatar: {
     url: "/api/v1/user/updateAvatar",
-    method: "patch",
+    method: "post",
   },
   logout: {
     url: "/api/v1/user/logout",
