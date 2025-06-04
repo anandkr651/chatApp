@@ -5,7 +5,6 @@ import io from "socket.io-client";
 import sound from "../assets/notification.mp3";
 import SummaryApi from "../common/SummaryApi";
 import Axios from "../utils/Axios";
-import AxiosToastError from "../utils/AxiosToastError";
 
 export const globalContext = createContext(null);
 export const useGlobalContext = () => useContext(globalContext);

@@ -1,6 +1,5 @@
 import Axios from "./Axios";
 import SummaryApi from "../common/SummaryApi";
-import AxiosToastError from "./AxiosToastError";
 
 const fetchUserDetails = async () => {
   try {

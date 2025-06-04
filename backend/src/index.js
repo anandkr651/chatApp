@@ -47,17 +47,6 @@ app.use(
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/message", messageRoute);
 
-
-// ************************** code for deployment  ********************************
-if(process.env.NODE_ENV === 'production'){
-    const dirPath=path.resolve()
-
-    app.use(express.static("./frontend/dist"))
-    app.get("*",(req,res)=>{
-        res.sendFile(path.resolve(dirPath,"./frontend/dist","index.html"))
-    })
-}
-
 connectDB();
 server.listen(process.env.PORT, () => {
   console.log(`Server is Running on port ${process.env.PORT}`);
