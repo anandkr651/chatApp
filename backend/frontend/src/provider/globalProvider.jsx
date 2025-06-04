@@ -43,7 +43,8 @@ const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     if (user) {
-      const socket = io("http://localhost:8000", {
+      // const socket = io("http://localhost:8000", {
+      const socket = io("https://chatapp-ogds.onrender.com", {
         query: {
           userId: user._id, //then go to server.js
         },
