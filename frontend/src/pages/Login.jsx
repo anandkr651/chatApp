@@ -54,7 +54,6 @@ const Login = () => {
       }
     } catch (error) {
       AxiosToastError(error);
-    
     }
   };
   return (

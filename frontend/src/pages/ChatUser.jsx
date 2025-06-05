@@ -45,8 +45,7 @@ function ChatUser() {
             <h1 className="font-bold ">{selectconversation.fullname}</h1>
             <span>{getOnlineUserStatus(selectconversation._id)}</span>
           </div>
-        </div>)
-              }
+        </div>)}
       </div>
   );
 }

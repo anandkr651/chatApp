@@ -19,8 +19,8 @@
 //     console.log("MongoDB connection fail", err);
 //   });
 
-import express from "express";
 import dotenv from "dotenv";
+import express from "express";
 import connectDB from "./db/index.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -28,9 +28,7 @@ import userRoute from "./routes/user.routes.js";
 import messageRoute from "./routes/message.routes.js";
 import { app, server } from "./SocketIO/server.js";
 
-dotenv.config({
-  path: "./.env",
-});
+dotenv.config();
 
 app.use(express.json({ limit: "16kb" }));
 app.use(express.urlencoded({ extended: true }));

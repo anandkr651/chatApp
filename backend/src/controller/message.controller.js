@@ -38,15 +38,15 @@ const sendMessage = async (req, res) => {
     // await newMessage.save()
     await Promise.all([conversation.save(), newMessage.save()]);
 
-    const receiverSocketId=getReciverSocketId(reciverId) //comes from server.js
-    if(receiverSocketId){
-        io.to(receiverSocketId).emit("newMessage",newMessage)
+    const receiverSocketId = getReciverSocketId(reciverId); //comes from server.js
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit("newMessage", newMessage);
     }
 
     return res.status(200).json({
-      data:newMessage,
-      error:false,
-      success:true,
+      data: newMessage,
+      error: false,
+      success: true,
     });
   } catch (error) {
     return res.status(500).json({

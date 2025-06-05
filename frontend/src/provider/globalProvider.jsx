@@ -36,8 +36,8 @@ const GlobalProvider = ({ children }) => {
     }
   }, []);
 
-  const [socket, setSocket] = useState(null);
   const user = useSelector((state) => state.user);
+  const [socket, setSocket] = useState(null);
   const [onlineUser, setOnlineUser] = useState([]);
 
   useEffect(() => {

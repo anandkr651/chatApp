@@ -67,6 +67,9 @@ function Profile() {
         </Link>
         <div className="flex flex-col justify-center items-center">
           <div className="w-20 h-20 rounded-full overflow-hidden flex items-center justify-center relative ">
+            {openProfileAvatar && (
+              <UserProfileAvatarEdit close={() => setOpenProfileAvatar(false)} />
+            )}
             <img
               src={user.avatar || DummyAvatar}
               alt={user.fulname}
@@ -78,9 +81,6 @@ function Profile() {
               onClick={() => setOpenProfileAvatar(true)}
             />
           </div>
-          {openProfileAvatar && (
-            <UserProfileAvatarEdit close={() => setOpenProfileAvatar(false)} />
-          )}
         </div>
 
         {/*fullname, mobile , email*/}
