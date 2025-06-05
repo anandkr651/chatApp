@@ -1,4 +1,3 @@
-export const baseURL = "http://localhost:8000";
 const SummaryApi = {
   login: {
     url: "/api/v1/user/login",
