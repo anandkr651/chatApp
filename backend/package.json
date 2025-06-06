@@ -4,6 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "dev": "npm src/index.js",
     "start": "nodemon src/index.js"
   },
   "author": "",
