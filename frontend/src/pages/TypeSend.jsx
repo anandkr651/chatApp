@@ -17,7 +17,7 @@ function TypeSend() {
     e.preventDefault();
     try {
       const accessToken = await localStorage.getItem("accessToken");
-      const response = await axios.post(`http://localhost:8000/api/v1/message/sender/${selectconversation._id}`,{ message },
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/v1/message/sender/${selectconversation._id}`,{ message },
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

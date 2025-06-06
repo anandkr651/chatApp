@@ -17,7 +17,7 @@ const GlobalProvider = ({ children }) => {
   const getMessage = async () => {
     try {
       const accessToken = localStorage.getItem("accessToken");
-      const response = await axios.get(`http://localhost:8000/api/v1/message/get/${selectconversation._id}`,
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/v1/message/get/${selectconversation._id}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -42,7 +42,7 @@ const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     if (user) {
-      const socket = io("http://localhost:8000", {
+      const socket = io(`${import.meta.env.VITE_BASE_URL}`, {
         query: {
           userId: user._id, //then go to server.js
         },
